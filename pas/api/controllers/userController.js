@@ -22,6 +22,17 @@ exports.create_a_user = function(req, res) {
   });
 };
 
+exports.login = function (req, res){
+  User.findOne({ email: req.body.email, senha : req.body.senha }).exec((err, user) =>{
+    if (err) {
+      return res.status(400);
+    } else if (!user) {
+      var err = new Error('User not found.');
+      return res.status(400);
+    }
+    return res.status(200).send(user);
+  });
+}
 
 // exports.read_a_task = function(req, res) {
 //   Task.findById(req.params.taskId, function(err, task) {
