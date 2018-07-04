@@ -7,6 +7,10 @@ module.exports = function(app) {
     .get(userList.list_all_users)
     .post(userList.create_a_user);
 
+  app.route('/foto')
+    .get()
+    .post(userList.mandaFoto);
+
   app.route('/login')
       .post(userList.login);
 
